@@ -1,20 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App'
+import axios from 'axios'
 
-const App = () => {
-    const now = new Date()
-    const a = 10
-    const b = 20
+axios.get('http://localhost:3001/notes').then(response => {
+  const notes = response.data
+  console.log(response)
   
-    return (
-      <div>
-        <p>Hello world, it is {now.toString()}</p>
-        <p>
-          {a} plus {b} is {a + b}
-        </p>
-      </div>
-    )
-  }
-  
-
-ReactDOM.render(<App />, document.getElementById('root'))
+})
+ReactDOM.render(
+  <App notes={notes} />,
+  document.getElementById('root')
+)
